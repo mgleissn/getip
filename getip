@@ -14,11 +14,17 @@ else
   input_file = ARGV[0]
 end
 
+my_domain = ARGV[1]
+
 
 IO.foreach(input_file) {|line|
-	puts line
-	#p IPSocket::getaddress("#{line}")
-	p `host "#{line}.admdom.harpercollege.edu"`
+	my_host = line.chomp
+	#puts line
+	qualified_host = my_host + "." + my_domain
+        #p qualified_host
+	#p IPSocket::getaddress("#{qualified_host}")
+	result = `host "#{qualified_host}"`
+	p result.chomp
 
 }
 
