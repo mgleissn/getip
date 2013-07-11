@@ -1,4 +1,4 @@
 getip
 =====
 
-Ruby script to get hostname and IP from a supplied list and return CSV
+Ruby script to get IP from a supplied list of hosts and return host and IP.
