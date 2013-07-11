@@ -5,16 +5,20 @@ require 'socket' #=> true
 #script to get IPs of systems from an input file 
 
 #if none supplied request it
-unless ARGV.length > 0
-  puts "Dude, not the right number of arguments."
-  puts "Usage: ruby MyScript.rb InputFile.csv SortedOutputFile.csv\n"
-end
+if ARGV.length < 1
+  puts "Please enter a file"
+  #puts "Usage: ruby MyScript.rb InputFile.csv SortedOutputFile.csv\n"
+  input_file = gets
+else
 #get the filename from the command line
-input_file = ARGV[0]
+  input_file = ARGV[0]
+end
 
 
 IO.foreach(input_file) {|line|
 	puts line
-	IPSocket::getaddress(line)
+	#p IPSocket::getaddress("#{line}")
+	p `host "#{line}.admdom.harpercollege.edu"`
+
 }
 
